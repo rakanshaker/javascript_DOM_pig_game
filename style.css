@@ -45,6 +45,14 @@ body {
     padding: 100px;
 }
 
+.inpt-score{
+    text-align: center;
+    position: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-left: 430px;
+
+}
 
 
 /**********************************************
