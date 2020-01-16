@@ -33,8 +33,8 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
       6
     ]
     //1. Random number
-    var dice1 = 6;//Math.floor(Math.random() * 6) + 1;
-    var dice2 = 6;//Math.floor(Math.random() * 6) + 1;
+    var dice1 = Math.floor(Math.random() * 6) + 1;
+    var dice2 = Math.floor(Math.random() * 6) + 1;
     lastRoll = [dice1,dice2]
 
     console.log (lastRoll)
