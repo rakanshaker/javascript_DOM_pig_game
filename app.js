@@ -28,10 +28,15 @@ document.querySelector(".btn-win").addEventListener("click", function() {
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
   if (gamePlaying) {
+    const losing_turn_condition_ar = [
+      6,
+      6
+    ]
     //1. Random number
     var dice1 = 6;//Math.floor(Math.random() * 6) + 1;
     var dice2 = 6;//Math.floor(Math.random() * 6) + 1;
     lastRoll = [dice1,dice2]
+
     console.log (lastRoll)
     
     //2. Display the results
@@ -44,7 +49,8 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     diceTwoDOM.src = "dice-" + dice2 + ".png";
 
     //IF the last roll and the current roll are 6 - lose your total points, and lose your turn
-    if (lastRoll == [6, 6]) {
+    if (lastRoll[0] == 6 && lastRoll[1] == 6) {
+      console.log ("satisfied condition");
       scores[activePlayer] = 0;
       roundScore = 0;
       document.querySelector(
