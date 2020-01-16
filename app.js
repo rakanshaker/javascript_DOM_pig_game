@@ -24,24 +24,27 @@ document.querySelector(".btn-win").addEventListener("click", function() {
     }
   }
 });
-console.log(winningScore);
+
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
   if (gamePlaying) {
     //1. Random number
-    var dice = Math.floor(Math.random() * 6) + 1;
-
-    //2. Display the result
+    var dice1 = 6;//Math.floor(Math.random() * 6) + 1;
+    var dice2 = 6;//Math.floor(Math.random() * 6) + 1;
+    lastRoll = [dice1,dice2]
+    console.log (lastRoll)
+    
+    //2. Display the results
     var diceDOM = document.querySelector(".dice");
     diceDOM.style.display = "block";
-    diceDOM.src = "dice-" + dice + ".png";
+    diceDOM.src = "dice-" + dice1 + ".png";
 
     var diceTwoDOM = document.querySelector(".dice2");
     diceTwoDOM.style.display = "block";
-    diceTwoDOM.src = "dice-" + dice + ".png";
+    diceTwoDOM.src = "dice-" + dice2 + ".png";
 
-    //Update the round score IF the rolled number is NOT a 1
-    if (lastRoll === 6 && dice === 6) {
+    //IF the last roll and the current roll are 6 - lose your total points, and lose your turn
+    if (lastRoll == [6, 6]) {
       scores[activePlayer] = 0;
       roundScore = 0;
       document.querySelector(
@@ -51,9 +54,10 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
       lastRoll = null;
       return;
     }
-    if (dice !== 1) {
+    //Update the round score IF the rolled number is NOT a 1
+    if (dice1 !== 1 && dice2 !== 1) {
       //Add Score
-      roundScore += dice;
+      roundScore += (dice1 + dice2);
       document.querySelector(
         "#current-" + activePlayer
       ).textContent = roundScore;
@@ -62,9 +66,7 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
       nextPlayer();
     }
   }
-  lastRoll = dice;
-  console.log(lastRoll);
-  console.log(winningScore);
+
 });
 
 document.querySelector(".btn-hold").addEventListener("click", function() {
